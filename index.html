@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>FreshMart POS — Grocery Point of Sale</title>
+    <meta name="description" content="Offline-first grocery POS with billing, inventory management, QR codes and Google Sheets sync." />
+    <meta name="theme-color" content="#0f9d58" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="FreshMart POS" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%92%3C/text%3E%3C/svg%3E" />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <div class="brand-logo" id="brandLogo"></div>
+          <div>
+            <div class="brand-name" id="brandName">FreshMart</div>
+            <div class="brand-sub">Grocery POS</div>
+          </div>
+        </div>
+
+        <div class="nav-label">Store</div>
+        <nav class="nav" id="nav">
+          <a href="#/dashboard" data-route="dashboard"><span data-icon="dashboard"></span><span class="txt">Dashboard</span></a>
+          <a href="#/pos" data-route="pos"><span data-icon="cart"></span><span class="txt">POS / Billing</span></a>
+          <a href="#/inventory" data-route="inventory"><span data-icon="package"></span><span class="txt">Inventory</span></a>
+          <a href="#/labels" data-route="labels"><span data-icon="qr"></span><span class="txt">QR Labels</span></a>
+          <a href="#/sales" data-route="sales"><span data-icon="receipt"></span><span class="txt">Invoices</span></a>
+          <a href="#/settings" data-route="settings"><span data-icon="settings"></span><span class="txt">Settings</span></a>
+        </nav>
+
+        <div class="sidebar-foot">
+          <button class="install-card hidden" id="installBtn" title="Install on this PC">
+            <span class="install-ic" data-icon="download"></span>
+            <span class="meta"><span class="who">Install app</span><span class="role">Works offline</span></span>
+          </button>
+          <div class="cashier-card">
+            <div class="avatar">AK</div>
+            <div class="meta">
+              <div class="who">Alex Kim</div>
+              <div class="role">Cashier · Counter 1</div>
+            </div>
+            <span class="online-dot" title="System online"></span>
+          </div>
+        </div>
+      </aside>
+
+      <div class="main">
+        <header class="topbar">
+          <div>
+            <h1 id="pageTitle">Dashboard</h1>
+            <div class="sub" id="pageSub"></div>
+          </div>
+          <div class="spacer"></div>
+          <button class="sync-pill demo" id="syncPill" title="Data source &amp; sync"><span class="dot"></span><span class="txt" id="syncText">Local</span></button>
+          <button class="btn btn-outline" id="globalScan" title="Scan a product QR / barcode or an invoice QR">
+            <span data-icon="scan"></span> Scan code
+          </button>
+          <div class="clock">
+            <div class="time" id="clockTime">--:--</div>
+            <div class="date" id="clockDate"></div>
+          </div>
+        </header>
+        <div class="banner hidden" id="banner"></div>
+        <main class="view" id="view"></main>
+      </div>
+    </div>
+
+    <div id="modalRoot"></div>
+    <div id="toastRoot"></div>
+    <div id="printArea"></div>
+
+    <script src="vendor/jsQR.js"></script>
+    <script src="vendor/qrcode.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
